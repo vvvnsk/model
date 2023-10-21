@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="workstation" nsURI="http://www.novosoft.net/tasker/workstation"
+    nsPrefix="workstation">
+  <eAnnotations source="http://www.eclipse.org/edapt">
+    <details key="historyURI" value="Naming.history"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Workstation" eSuperTypes="Base.ecore#//CORBAObject #//TWorkstation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TWorkstation" eSuperTypes="Base.ecore#//Named">
+    <eOperations name="stop"/>
+    <eOperations name="getOperations" eType="#//Operations">
+      <eParameters name="parameters" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Operations">
+    <eOperations name="call" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eParameters name="operation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="parameters" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eOperations name="finish" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="COperations" eSuperTypes="Base.ecore#//CORBAObject #//Operations"/>
+</ecore:EPackage>

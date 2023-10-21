@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/NSTaskerBE/src/main/java" modelPluginID="NSTaskerBE"
+    modelName="Base" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>Base.ecore</foreignModel>
+  <genPackages prefix="Base" resource="XML" disposableProviderFactory="true" ecorePackage="Base.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Base.ecore#//GroupType">
+      <genEnumLiterals ecoreEnumLiteral="Base.ecore#//GroupType/Vertical"/>
+      <genEnumLiterals ecoreEnumLiteral="Base.ecore#//GroupType/Horizontal"/>
+      <genEnumLiterals ecoreEnumLiteral="Base.ecore#//GroupType/LVertical"/>
+      <genEnumLiterals ecoreEnumLiteral="Base.ecore#//GroupType/LHorizontal"/>
+      <genEnumLiterals ecoreEnumLiteral="Base.ecore#//GroupType/Expand"/>
+      <genEnumLiterals ecoreEnumLiteral="Base.ecore#//GroupType/Alternatives"/>
+      <genEnumLiterals ecoreEnumLiteral="Base.ecore#//GroupType/Checked"/>
+      <genEnumLiterals ecoreEnumLiteral="Base.ecore#//GroupType/Undefined"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Base.ecore#//DependencyType">
+      <genEnumLiterals ecoreEnumLiteral="Base.ecore#//DependencyType/eq"/>
+      <genEnumLiterals ecoreEnumLiteral="Base.ecore#//DependencyType/lt"/>
+      <genEnumLiterals ecoreEnumLiteral="Base.ecore#//DependencyType/gt"/>
+    </genEnums>
+    <genClasses ecoreClass="Base.ecore#//CORBAObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//CORBAObject/Object"/>
+      <genOperations ecoreOperation="Base.ecore#//CORBAObject/load"/>
+    </genClasses>
+    <genClasses ecoreClass="Base.ecore#//Value">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Value/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Value/stringValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Value/stringListValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Value/intListValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Value/intValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Value/objValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Value/boolValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Value/longValue"/>
+    </genClasses>
+    <genClasses ecoreClass="Base.ecore#//Ordered">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Ordered/order"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Base.ecore#//Named">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Named/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Named/displayName"/>
+    </genClasses>
+    <genClasses ecoreClass="Base.ecore#//Group"/>
+    <genClasses ecoreClass="Base.ecore#//Attribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Attribute/hidden"/>
+    </genClasses>
+    <genClasses ecoreClass="Base.ecore#//AttributeValue">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Base.ecore#//AttributeValue/attribute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Base.ecore#//AttributeValue/value"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Base.ecore#//AttributeValue/parent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Base.ecore#//AttributeValue/dependant"/>
+    </genClasses>
+    <genClasses ecoreClass="Base.ecore#//AttributeType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//AttributeType/values"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//AttributeType/upperBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//AttributeType/lowerBound"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Base.ecore#//AbstractReadStream">
+      <genOperations ecoreOperation="Base.ecore#//AbstractReadStream/read">
+        <genParameters ecoreParameter="Base.ecore#//AbstractReadStream/read/size"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="Base.ecore#//Stream"/>
+    <genClasses image="false" ecoreClass="Base.ecore#//AbstractWriteStream">
+      <genOperations ecoreOperation="Base.ecore#//AbstractWriteStream/write">
+        <genParameters ecoreParameter="Base.ecore#//AbstractWriteStream/write/data"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Base.ecore#//AbstractStream">
+      <genOperations ecoreOperation="Base.ecore#//AbstractStream/open"/>
+      <genOperations ecoreOperation="Base.ecore#//AbstractStream/close"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Base.ecore#//Attributed">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Base.ecore#//Attributed/attributes"/>
+      <genOperations ecoreOperation="Base.ecore#//Attributed/getAttribute">
+        <genParameters ecoreParameter="Base.ecore#//Attributed/getAttribute/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="Base.ecore#//Attributed/setAttribute">
+        <genParameters ecoreParameter="Base.ecore#//Attributed/setAttribute/name"/>
+        <genParameters ecoreParameter="Base.ecore#//Attributed/setAttribute/value"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="Base.ecore#//Form"/>
+    <genClasses ecoreClass="Base.ecore#//Dependency">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Base.ecore#//Dependency/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Base.ecore#//Dependency/dependant"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Dependency/type"/>
+    </genClasses>
+    <genClasses ecoreClass="Base.ecore#//Hierarchical">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Base.ecore#//Hierarchical/parent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Base.ecore#//Hierarchical/children"/>
+    </genClasses>
+    <genClasses ecoreClass="Base.ecore#//Type">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Type/values"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Type/upperBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Type/lowerBound"/>
+    </genClasses>
+    <genClasses ecoreClass="Base.ecore#//Typed">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Base.ecore#//Typed/type"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Base.ecore#//Described">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Described/description"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

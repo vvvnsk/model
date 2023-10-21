@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="server" nsURI="http://www.novosoft.net/tasker/server" nsPrefix="server">
+  <eAnnotations source="http://www.eclipse.org/edapt">
+    <details key="historyURI" value="Naming.history"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Server" eSuperTypes="Base.ecore#//CORBAObject #//TServer"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Settings">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="smtp" eType="ecore:EClass internet.ecore#//SMTP"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="email" eType="ecore:EClass internet.ecore#//EMail"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="proxy" eType="ecore:EClass internet.ecore#//Proxy"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RegInfo">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="registered" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="wsLimit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expired" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="regKey" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="trialStartDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="trialEndDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TServer" eSuperTypes="Base.ecore#//Named">
+    <eOperations name="register">
+      <eParameters name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="logoff"/>
+    <eOperations name="getReaderPath" eType="ecore:EClass Data.ecore#//ReaderPath">
+      <eParameters name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="log" eType="ecore:EClass Task.ecore#//TLog"/>
+    </eOperations>
+    <eOperations name="getWriterPath" eType="ecore:EClass Data.ecore#//WriterPath">
+      <eParameters name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="log" eType="ecore:EClass Task.ecore#//TLog"/>
+    </eOperations>
+    <eOperations name="createTask" eType="ecore:EClass Task.ecore#//Task"/>
+    <eOperations name="saveSettings"/>
+    <eOperations name="runScript" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
+      <eParameters name="script" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="parameters" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Task" upperBound="-1" eType="ecore:EClass Task.ecore#//TTask"
+        containment="true" eOpposite="Task.ecore#//TTask/server"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Workstation" upperBound="-1"
+        eType="ecore:EClass Workstation.ecore#//Workstation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="settings" eType="#//Settings"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="regInfo" eType="#//RegInfo"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="namedObject" eType="ecore:EClass Naming.ecore#//NamedObject"
+        eOpposite="Naming.ecore#//NamedObject/servers"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="model" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="user" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="password" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="log" eType="ecore:EClass Task.ecore#//TLog"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scheduler" eType="ecore:EClass Scheduler.ecore#//Scheduler"/>
+  </eClassifiers>
+</ecore:EPackage>

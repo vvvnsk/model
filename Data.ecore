@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="data" nsURI="http://www.novosoft.net/tasker/data" nsPrefix="data">
+  <eAnnotations source="http://www.eclipse.org/edapt">
+    <details key="historyURI" value="Naming.history"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Path" abstract="true" eSuperTypes="#//DataInfo Base.ecore#//CORBAObject Base.ecore#//Attributed Base.ecore#//Hierarchical">
+    <eOperations name="getContent" upperBound="-1" eType="#//Path"/>
+    <eOperations name="append">
+      <eParameters name="names" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="cutTail">
+      <eParameters name="count" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="set" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="get" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="exists" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="save" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="add" eType="#//Path"/>
+    <eOperations name="delete" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="host" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.novosoft.net/emf">
+        <details key="hidden" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataInfo" eSuperTypes="Base.ecore#//Named #//DataAttributes"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataAttributes">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="created" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modified" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="access" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="custom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.novosoft.net/emf">
+        <details key="hidden" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="container" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.novosoft.net/emf">
+        <details key="hidden" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReaderPath" eSuperTypes="#//Path Base.ecore#//AbstractReadStream"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WriterPath" eSuperTypes="#//Path Base.ecore#//AbstractWriteStream"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Archive" eSuperTypes="Base.ecore#//Named">
+    <eOperations name="put" eType="#//VPath">
+      <eParameters name="path" eType="#//Path"/>
+    </eOperations>
+    <eOperations name="get" eType="#//Path">
+      <eParameters name="path" eType="#//VPath"/>
+    </eOperations>
+    <eOperations name="delete">
+      <eParameters name="path" eType="#//VPath"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="path" eType="#//Path"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="content" upperBound="-1"
+        eType="#//VPath" changeable="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VPath" eSuperTypes="#//Path">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+  </eClassifiers>
+</ecore:EPackage>

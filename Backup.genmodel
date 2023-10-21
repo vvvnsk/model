@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/NSTaskerBE/src/main/java" editDirectory="/NSTaskerBE.edit/src"
+    editorDirectory="/NSTaskerBE.editor/src" modelPluginID="NSTaskerBE" modelName="Backup"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" suppressGenModelAnnotations="false" copyrightFields="false"
+    editPluginID="NSTaskerBE.edit" editorPluginID="NSTaskerBE.editor" operationReflection="true"
+    importOrganizing="true">
+  <foreignModel>Server.ecore</foreignModel>
+  <genPackages prefix="Server" disposableProviderFactory="true" ecorePackage="Server.ecore#/">
+    <genClasses ecoreClass="Server.ecore#//Server">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Server.ecore#//Server/Task"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Server.ecore#//Server/Workstation"/>
+      <genOperations ecoreOperation="Server.ecore#//Server/login">
+        <genParameters ecoreParameter="Server.ecore#//Server/login/User"/>
+        <genParameters ecoreParameter="Server.ecore#//Server/login/Password"/>
+      </genOperations>
+      <genOperations ecoreOperation="Server.ecore#//Server/register">
+        <genParameters ecoreParameter="Server.ecore#//Server/register/key"/>
+      </genOperations>
+      <genOperations ecoreOperation="Server.ecore#//Server/logoff"/>
+      <genOperations ecoreOperation="Server.ecore#//Server/getReaderPath">
+        <genParameters ecoreParameter="Server.ecore#//Server/getReaderPath/path"/>
+        <genParameters ecoreParameter="Server.ecore#//Server/getReaderPath/log"/>
+      </genOperations>
+      <genOperations ecoreOperation="Server.ecore#//Server/getWriterPath">
+        <genParameters ecoreParameter="Server.ecore#//Server/getWriterPath/path"/>
+        <genParameters ecoreParameter="Server.ecore#//Server/getWriterPath/log"/>
+      </genOperations>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Task" disposableProviderFactory="true" ecorePackage="Task.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Task.ecore#//ScheduleType">
+      <genEnumLiterals ecoreEnumLiteral="Task.ecore#//ScheduleType/OneShot"/>
+      <genEnumLiterals ecoreEnumLiteral="Task.ecore#//ScheduleType/Everyday"/>
+      <genEnumLiterals ecoreEnumLiteral="Task.ecore#//ScheduleType/WeekDays"/>
+      <genEnumLiterals ecoreEnumLiteral="Task.ecore#//ScheduleType/MonthDays"/>
+      <genEnumLiterals ecoreEnumLiteral="Task.ecore#//ScheduleType/Period"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Task.ecore#//TaskStatus">
+      <genEnumLiterals ecoreEnumLiteral="Task.ecore#//TaskStatus/success"/>
+      <genEnumLiterals ecoreEnumLiteral="Task.ecore#//TaskStatus/error"/>
+      <genEnumLiterals ecoreEnumLiteral="Task.ecore#//TaskStatus/stopped"/>
+      <genEnumLiterals ecoreEnumLiteral="Task.ecore#//TaskStatus/running"/>
+      <genEnumLiterals ecoreEnumLiteral="Task.ecore#//TaskStatus/undefined"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Task.ecore#//RunTime">
+      <genEnumLiterals ecoreEnumLiteral="Task.ecore#//RunTime/Before"/>
+      <genEnumLiterals ecoreEnumLiteral="Task.ecore#//RunTime/After"/>
+      <genEnumLiterals ecoreEnumLiteral="Task.ecore#//RunTime/OnError"/>
+      <genEnumLiterals ecoreEnumLiteral="Task.ecore#//RunTime/Never"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Task.ecore#//ActionType">
+      <genEnumLiterals ecoreEnumLiteral="Task.ecore#//ActionType/RunProgram"/>
+      <genEnumLiterals ecoreEnumLiteral="Task.ecore#//ActionType/SendEmail"/>
+    </genEnums>
+    <genClasses ecoreClass="Task.ecore#//Task">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Task.ecore#//Task/attributes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Task.ecore#//Task/creationDate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Task.ecore#//Task/schedule"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Task.ecore#//Task/status"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Task.ecore#//Task/log"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Task.ecore#//Task/lastRunDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Task.ecore#//Task/nextRunDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Task.ecore#//Task/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Task.ecore#//Task/actions"/>
+      <genOperations ecoreOperation="Task.ecore#//Task/start"/>
+      <genOperations ecoreOperation="Task.ecore#//Task/stop"/>
+      <genOperations ecoreOperation="Task.ecore#//Task/save"/>
+      <genOperations ecoreOperation="Task.ecore#//Task/delete"/>
+    </genClasses>
+    <genClasses ecoreClass="Task.ecore#//Schedule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Task.ecore#//Schedule/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Task.ecore#//Schedule/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Task.ecore#//Schedule/startDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Task.ecore#//Schedule/runMissed"/>
+    </genClasses>
+    <genClasses ecoreClass="Task.ecore#//Log">
+      <genOperations ecoreOperation="Task.ecore#//Log/clear"/>
+    </genClasses>
+    <genClasses ecoreClass="Task.ecore#//Action">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Task.ecore#//Action/time"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Task.ecore#//Action/action"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Task.ecore#//Action/type"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Workstation" disposableProviderFactory="true" ecorePackage="Workstation.ecore#/">
+    <genClasses ecoreClass="Workstation.ecore#//Workstation"/>
+  </genPackages>
+  <genPackages prefix="Data" disposableProviderFactory="true" ecorePackage="Data.ecore#/">
+    <genClasses ecoreClass="Data.ecore#//Path">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Data.ecore#//Path/host"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Data.ecore#//Path/parent"/>
+      <genOperations ecoreOperation="Data.ecore#//Path/getContent"/>
+      <genOperations ecoreOperation="Data.ecore#//Path/append">
+        <genParameters ecoreParameter="Data.ecore#//Path/append/names"/>
+      </genOperations>
+      <genOperations ecoreOperation="Data.ecore#//Path/cutTail">
+        <genParameters ecoreParameter="Data.ecore#//Path/cutTail/count"/>
+      </genOperations>
+      <genOperations ecoreOperation="Data.ecore#//Path/set">
+        <genParameters ecoreParameter="Data.ecore#//Path/set/path"/>
+      </genOperations>
+      <genOperations ecoreOperation="Data.ecore#//Path/get"/>
+    </genClasses>
+    <genClasses ecoreClass="Data.ecore#//DataInfo"/>
+    <genClasses ecoreClass="Data.ecore#//DataAttributes">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Data.ecore#//DataAttributes/created"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Data.ecore#//DataAttributes/modified"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Data.ecore#//DataAttributes/size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Data.ecore#//DataAttributes/access"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Data.ecore#//DataAttributes/custom"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Data.ecore#//DataAttributes/container"/>
+    </genClasses>
+    <genClasses ecoreClass="Data.ecore#//ReaderPath"/>
+    <genClasses ecoreClass="Data.ecore#//WriterPath"/>
+  </genPackages>
+  <genPackages prefix="Base" ecorePackage="Base.ecore#/">
+    <genClasses ecoreClass="Base.ecore#//CORBAObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//CORBAObject/Object"/>
+      <genOperations ecoreOperation="Base.ecore#//CORBAObject/load"/>
+    </genClasses>
+    <genClasses ecoreClass="Base.ecore#//Value">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Value/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Value/stringValue"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Base.ecore#//Value/listValue"/>
+    </genClasses>
+    <genClasses ecoreClass="Base.ecore#//Ordered">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Ordered/order"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Base.ecore#//Named">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Named/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Base.ecore#//Group"/>
+    <genClasses ecoreClass="Base.ecore#//Attribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Attribute/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Base.ecore#//Attribute/group"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Attribute/upperBound"/>
+    </genClasses>
+    <genClasses ecoreClass="Base.ecore#//AttributeValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Base.ecore#//AttributeValue/attribute"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Base.ecore#//AttributeValue/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Base.ecore#//AbstractReadStream">
+      <genOperations ecoreOperation="Base.ecore#//AbstractReadStream/read">
+        <genParameters ecoreParameter="Base.ecore#//AbstractReadStream/read/size"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="Base.ecore#//Stream"/>
+    <genClasses image="false" ecoreClass="Base.ecore#//AbstractWriteStream">
+      <genOperations ecoreOperation="Base.ecore#//AbstractWriteStream/write">
+        <genParameters ecoreParameter="Base.ecore#//AbstractWriteStream/write/data"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Base.ecore#//AbstractStream">
+      <genOperations ecoreOperation="Base.ecore#//AbstractStream/open"/>
+      <genOperations ecoreOperation="Base.ecore#//AbstractStream/close"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

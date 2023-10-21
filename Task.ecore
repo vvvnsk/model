@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="task" nsURI="http://www.novosoft.net/tasker/task" nsPrefix="task">
+  <eAnnotations source="http://www.eclipse.org/edapt">
+    <details key="historyURI" value="Naming.history"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="Base.ecore#//CORBAObject #//TTask"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TaskType" eSuperTypes="Base.ecore#//Named">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//TaskType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" upperBound="-1"
+        eType="ecore:EClass Base.ecore#//Attribute"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.novosoft.net/emf">
+        <details key="hidden" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="corba" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ScheduleType">
+    <eLiterals name="OneShot"/>
+    <eLiterals name="Everyday" value="1"/>
+    <eLiterals name="WeekDays" value="2"/>
+    <eLiterals name="MonthDays" value="3"/>
+    <eLiterals name="Period" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Schedule">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" unique="false" eType="#//ScheduleType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="startDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="runMissed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TaskStatus">
+    <eLiterals name="success"/>
+    <eLiterals name="error" value="1"/>
+    <eLiterals name="stopped" value="2"/>
+    <eLiterals name="running" value="3"/>
+    <eLiterals name="undefined" value="-1" literal="undefined"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Log" eSuperTypes="Base.ecore#//CORBAObject #//TLog"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Action">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="#//RunTime"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="action" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//ActionType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RunTime">
+    <eLiterals name="Before"/>
+    <eLiterals name="After" value="1"/>
+    <eLiterals name="OnError" value="2"/>
+    <eLiterals name="Never" value="-1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ActionType">
+    <eLiterals name="RunProgram"/>
+    <eLiterals name="SendEmail" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="StopCondition">
+    <eLiterals name="IgnoreErrors"/>
+    <eLiterals name="IgnoreNonCrticalErrors" value="1"/>
+    <eLiterals name="StopOnAnyError" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TTask" eSuperTypes="Base.ecore#//Named Base.ecore#//Attributed">
+    <eOperations name="start"/>
+    <eOperations name="stop"/>
+    <eOperations name="save" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="delete"/>
+    <eOperations name="copy" eType="#//TTask"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="creationDate" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="schedule" eType="#//Schedule">
+      <eAnnotations source="http://www.novosoft.net/emf">
+        <details key="hidden" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//TaskStatus">
+      <eAnnotations source="http://www.novosoft.net/emf">
+        <details key="order" value="after type"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="log" eType="#//Log">
+      <eAnnotations source="http://www.novosoft.net/emf">
+        <details key="hidden" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastRunDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="http://www.novosoft.net/emf">
+        <details key="order" value="after nextRunDate"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nextRunDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="http://www.novosoft.net/emf">
+        <details key="order" value="after progress"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
+        eType="#//Action">
+      <eAnnotations source="http://www.novosoft.net/emf">
+        <details key="hidden" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stopCondition" eType="#//StopCondition">
+      <eAnnotations source="http://www.novosoft.net/emf">
+        <details key="hidden" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="server" eType="ecore:EClass Server.ecore#//TServer"
+        eOpposite="Server.ecore#//TServer/Task">
+      <eAnnotations source="http://www.novosoft.net/emf">
+        <details key="hidden" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//TaskType">
+      <eAnnotations source="http://www.novosoft.net/emf">
+        <details key="order" value="after name"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="progress" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"
+        defaultValueLiteral="0.0">
+      <eAnnotations source="http://www.novosoft.net/emf">
+        <details key="order" value="after status"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TLog" eSuperTypes="Base.ecore#//AbstractReadStream Base.ecore#//AbstractWriteStream">
+    <eOperations name="clear"/>
+  </eClassifiers>
+</ecore:EPackage>
